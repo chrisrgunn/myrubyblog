@@ -1,0 +1,44 @@
+EEPROM
+
+- onboard storage
+- back up for the memory that's inside the VCU
+
+- don't communicate every cycle
+- getting message from
+
+-MCM (motor controller) sends faults msg via CAN to VCU, VCU write to via SPI EPROM and outputs faults
+
+task 1
+- load faults from eeprom to memory (RAM)
+- 
+- check eeprom for exisiting faults
+- clear faults later
+- point to record errors and be able to recover in case car crashes, etc.
+
+Loop //version 1 every time
+{
+	read a message (blahblahFRAME)
+	copy data to ??? (i.e. variable, array) [from IO_CAN_DATA_FRAME to ?????]
+	Write data[] to EEPROM
+}
+
+//2nd version: checking a specific message iD
+
+//3rd version: seeing if stored message already exsists
+
+//Always saving all faults
+
+ubyt1	0 1 2 3 4 5 6 7 8	
+		0 0 1 0 0 0 0 0 0 <--- Input loop 20
+		0 0 0 0 0 0 1 0 0 <--- Input loop 30
+		-------------------
+		0 0 1 0 0 0 1 0 0 <----Output after loop 30
+
+OR operation
+
+i.e. within 10 loops couple messages
+
+CAN_FIFO_QUEUE 
+
+task 2
+- 

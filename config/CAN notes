@@ -1,0 +1,12 @@
+CAN // EEPROM Read/Write Pseduocode
+
+IO_CAN_DATA_FRAME can_frame
+current_faults[8]
+
+
+read from CAN
+if can_frame.data has a new fault that current_faults doesnt have
+	add new fault to current_faults
+	read EEPROM to see if current_faults has more faults than EEPROM does
+		if so, write to EEPROM
+		
